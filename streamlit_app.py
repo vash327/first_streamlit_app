@@ -1,4 +1,4 @@
-import streamlit slit
+import streamlit as slit
 streamlit.title('My Parents New Healthy Diner')
 ##added new lines
 streamlit.header('Breaakfash Menu')
