@@ -1,7 +1,8 @@
 import streamlit as slit
 slit.title('My Parents New Healthy Diner')
 ##added new lines
-slit.header('Breaakfash Menu')
-slit.text('Bacon Egg and Cheese')
-slit.text('Omeaga 3 & Blueberry Oatmeal')
-slit.text('Hard boiled free range egg')
+slit.header('Breakfast Favorites')
+slit.text('🥣Omega 3 & Blueberry Oatmeal')
+slit.text('🥗Kale, Spinach & Rocket Smoothie')
+slit.text('🐔Hard-Boiled Free-Range Egg')
+slit.text('🥑🍞Aavacado Toast')
