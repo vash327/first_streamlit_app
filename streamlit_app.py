@@ -11,3 +11,8 @@ slit.text('🥑🍞Aavacado Toast')
 
 ##add new header
 slit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
+
+##importing panda
+import pandas
+my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
+slit.dataframe(my_fruit_list)
