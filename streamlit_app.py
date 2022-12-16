@@ -10,4 +10,4 @@ slit.text('🐔Hard-Boiled Free-Range Egg')
 slit.text('🥑🍞Aavacado Toast')
 
 ##add new header
-streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
+slit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
