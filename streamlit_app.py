@@ -1,4 +1,8 @@
 import streamlit as slit
+import pandas
+import requests
+import snowflake.connector
+from urllib.error import URLError
 
 slit.title('My Parents New Healthy Diner')
 
@@ -12,8 +16,7 @@ slit.text('🥑🍞Avocado Toast')
 ##add new header
 slit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
-##importing panda
-import pandas
+##import pandas
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 my_fruit_list = my_fruit_list.set_index('Fruit')
 
@@ -31,7 +34,7 @@ slit.header("Fruityvice Fruit Advice!")
 fruit_choice = slit.text_input('What fruit would you like information about?','Kiwi')
 slit.write('The user entered ', fruit_choice)
 
-import requests
+#import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 #slit.text(fruityvice_response.json())  #removing this line ti remove the raw JSON
 
@@ -40,8 +43,10 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # write your own comment - what does this do?
 slit.dataframe(fruityvice_normalized)
 
-import snowflake.connector
+#don't run anything past here while we troubleshoot
+slit.stop()
 
+#import snowflake.connector
 my_cnx = snowflake.connector.connect(**slit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 ##my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
