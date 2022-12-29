@@ -66,8 +66,8 @@ if slit.button('Get Fruit Load List'):
     my_data_rows = get_fruit_load_list()
     slit.dataframe(my_data_rows)
     
-#don't run anything past here while we troubleshoot
-slit.stop()
+##don't run anything past here while we troubleshoot
+#slit.stop()
 
 #Allow end user to add a fruit to the list
 def insert_row_snowflake(new_fruit):
