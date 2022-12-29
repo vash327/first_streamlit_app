@@ -44,7 +44,7 @@ try:
   if not fruit_choice:
     slit.error("Please Select a fruit to get information.")
   else:
-    back_from_function = get_fruitvice_data(fruit_choice)
+    back_from_function = get_fruityvice_data(fruit_choice)
     # output it in the screen as a table
     slit.dataframe(back_from_function)
 
