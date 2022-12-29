@@ -54,3 +54,5 @@ slit.dataframe(my_data_rows)
 #Allow end user to add a fruit to the list
 add_my_fruit = slit.text_input('What fruit would you like to add?')
 slit.write('Thanks for adding ',add_my_fruit)
+
+my_cur.execute("Insert into PC_RIVERY_DB.public.fruit_load_list values ('from streamlit')")
