@@ -70,7 +70,13 @@ if slit.button('Get Fruit Load List'):
 slit.stop()
 
 #Allow end user to add a fruit to the list
+def insert_row_snowflake(new_fruit):
+    with my_cnx.cursor() as my_cur:
+        my_cur.execute("Insert into PC_RIVERY_DB.public.fruit_load_list values ('from streamlit')")
+        return "Thanks for adding" + new_fruit
+    
 add_my_fruit = slit.text_input('What fruit would you like to add?')
-slit.write('Thanks for adding ',add_my_fruit)
-
-my_cur.execute("Insert into PC_RIVERY_DB.public.fruit_load_list values ('from streamlit')")
+if slit.button('Add a Fruit to the List'):
+    my_cnx = snowflake.connector.connect(**slit.secrets["snowflake"])
+    back_from_function = insert_row_snowflake(add_my_fruit)
+    slit.text(back_from_function)
