@@ -30,7 +30,7 @@ slit.dataframe(fruits_to_show)
 slit.header("Fruityvice Fruit Advice!")
 
 import requests
-fruitvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 slit.text(fruitvice_response.json())
 
 # write your own comment -what does the next line do? 
