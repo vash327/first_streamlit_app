@@ -73,7 +73,7 @@ if slit.button('Get Fruit Load List'):
 def insert_row_snowflake(new_fruit):
     with my_cnx.cursor() as my_cur:
         my_cur.execute("Insert into PC_RIVERY_DB.public.fruit_load_list values ('" + new_fruit +"')")
-        return "Thanks for adding" + new_fruit
+        return "Thanks for adding " + new_fruit
     
 add_my_fruit = slit.text_input('What fruit would you like to add?')
 if slit.button('Add a Fruit to the List'):
