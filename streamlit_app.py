@@ -28,9 +28,11 @@ slit.dataframe(fruits_to_show)
 
 #New Section to display fruitvice api response
 slit.header("Fruityvice Fruit Advice!")
+fruit_choice = slit.text_input('What fruit would you like information about?','Kiwi')
+slit.write('The user entered ', fruit_choice)
 
 import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +"kiwi")
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 #slit.text(fruityvice_response.json())  #removing this line ti remove the raw JSON
 
 # write your own comment -what does the next line do? 
