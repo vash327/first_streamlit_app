@@ -29,6 +29,14 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 
 slit.dataframe(fruits_to_show)
 
+#Create a repeatable code block (called a function)
+def get_fruityvice_data(this_fruit_choice):
+   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + this_fruit_choice)
+    #slit.text(fruityvice_response.json())  #removing this line to remove the raw JSON
+    # take the json version of the response and normalize it
+    fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+    return fruityvice_normalized
+  
 #New Section to display fruitvice api response
 slit.header("Fruityvice Fruit Advice!")
 try:
@@ -36,12 +44,9 @@ try:
   if not fruit_choice:
     slit.error("Please Select a fruit to get information.")
   else:
-    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-    #slit.text(fruityvice_response.json())  #removing this line to remove the raw JSON
-    # take the json version of the response and normalize it
-    fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+    back_from_function = get_fruitvice_data(fruit_choice)
     # output it in the screen as a table
-    slit.dataframe(fruityvice_normalized)
+    slit.dataframe(back_from_function)
 
 except URLError as e:
     slit.error()
