@@ -31,18 +31,21 @@ slit.dataframe(fruits_to_show)
 
 #New Section to display fruitvice api response
 slit.header("Fruityvice Fruit Advice!")
-fruit_choice = slit.text_input('What fruit would you like information about?','Kiwi')
-slit.write('The user entered ', fruit_choice)
+try:
+  fruit_choice = slit.text_input('What fruit would you like information about?')
+  if not fruit_choice:
+    slit.error("Please Select a fruit to get information.")
+  else:
+    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+    #slit.text(fruityvice_response.json())  #removing this line to remove the raw JSON
+    # take the json version of the response and normalize it
+    fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+    # output it in the screen as a table
+    slit.dataframe(fruityvice_normalized)
 
-#import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-#slit.text(fruityvice_response.json())  #removing this line ti remove the raw JSON
-
-# write your own comment -what does the next line do? 
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-# write your own comment - what does this do?
-slit.dataframe(fruityvice_normalized)
-
+except URLError as e:
+    slit.error()
+    
 #don't run anything past here while we troubleshoot
 slit.stop()
 
