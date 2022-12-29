@@ -53,7 +53,7 @@ except URLError as e:
 
 #import snowflake.connector
 
-slit.header("The fruit load list contains:")
+slit.header("View Our Fruit List - Add Your Favorites!")
 #Snowflake related functions
 def get_fruit_load_list():
     with my_cnx.cursor() as my_cur:
@@ -64,6 +64,7 @@ def get_fruit_load_list():
 if slit.button('Get Fruit Load List'):
     my_cnx = snowflake.connector.connect(**slit.secrets["snowflake"])
     my_data_rows = get_fruit_load_list()
+    my_cnx.close()
     slit.dataframe(my_data_rows)
     
 ##don't run anything past here while we troubleshoot
@@ -79,4 +80,5 @@ add_my_fruit = slit.text_input('What fruit would you like to add?')
 if slit.button('Add a Fruit to the List'):
     my_cnx = snowflake.connector.connect(**slit.secrets["snowflake"])
     back_from_function = insert_row_snowflake(add_my_fruit)
+    my_cnx.close()
     slit.text(back_from_function)
